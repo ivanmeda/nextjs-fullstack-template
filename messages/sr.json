@@ -43,7 +43,13 @@
     "resetSubmitting": "Slanje...",
     "resetSubmit": "Pošalji link za reset",
     "resetSent": "Ako nalog sa tim emailom postoji, uskoro ćete dobiti link za reset.",
-    "backToSignIn": "Nazad na prijavu"
+    "backToSignIn": "Nazad na prijavu",
+    "toastSignInSuccess": "Uspješna prijava",
+    "toastSignInError": "Neispravan email ili lozinka",
+    "toastSignUpSuccess": "Nalog uspješno kreiran",
+    "toastSignUpError": "Nije moguće kreirati nalog",
+    "toastResetSuccess": "Ako nalog sa tim emailom postoji, uskoro ćete dobiti link za reset.",
+    "toastResetError": "Nije moguće poslati link za reset"
   },
   "DashboardPage": {
     "title": "Kontrolna tabla",

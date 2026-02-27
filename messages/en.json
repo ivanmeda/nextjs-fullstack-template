@@ -43,7 +43,13 @@
     "resetSubmitting": "Sending...",
     "resetSubmit": "Send reset link",
     "resetSent": "If an account exists with that email, you'll receive a reset link shortly.",
-    "backToSignIn": "Back to sign in"
+    "backToSignIn": "Back to sign in",
+    "toastSignInSuccess": "Signed in successfully",
+    "toastSignInError": "Invalid email or password",
+    "toastSignUpSuccess": "Account created successfully",
+    "toastSignUpError": "Could not create account",
+    "toastResetSuccess": "If an account exists with that email, you will receive a reset link shortly.",
+    "toastResetError": "Could not send reset link"
   },
   "DashboardPage": {
     "title": "Dashboard",

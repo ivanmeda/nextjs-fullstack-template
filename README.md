@@ -1,36 +1,182 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Fullstack Template
+
+A production-ready fullstack template built with modern technologies and best practices.
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Framework | Next.js 16 (App Router) |
+| Language | TypeScript (strict) |
+| Styling | Tailwind CSS 4 |
+| Components | shadcn/ui + Lucide React |
+| API Layer | tRPC v11 |
+| Data Fetching | TanStack Query 5 (via tRPC) |
+| Forms | react-hook-form + zod |
+| URL State | nuqs 2 |
+| Client State | Zustand 5 |
+| Auth | Better Auth |
+| Database | Prisma 7 + Neon (PostgreSQL) |
+| Email | Resend |
+| AI | Vercel AI SDK |
+| File Storage | Vercel Blob |
+| i18n | next-intl |
+| Background Jobs | Inngest |
+| Env Validation | T3 Env |
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 20+
+- npm
+- A [Neon](https://neon.tech) database
+
+### Setup
+
+1. **Clone the repository:**
+
+```bash
+git clone https://github.com/ivanmeda/nextjs-fullstack-template.git
+cd nextjs-fullstack-template
+```
+
+2. **Install dependencies:**
+
+```bash
+npm install
+```
+
+3. **Set up environment variables:**
+
+```bash
+cp .env.example .env.local
+```
+
+Fill in all required values in `.env.local`.
+
+4. **Generate Prisma client:**
+
+```bash
+npx prisma generate
+```
+
+5. **Push database schema:**
+
+```bash
+npx prisma db push
+```
+
+6. **Run the development server:**
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Optional: Inngest Dev Server
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run inngest:dev
+```
 
-## Learn More
+## Folder Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── (auth)/             # Auth pages (sign-in, sign-up, etc.)
+│   ├── (dashboard)/        # Protected pages with sidebar layout
+│   ├── (marketing)/        # Public pages (pricing, etc.)
+│   └── api/                # API routes (tRPC, auth, chat, upload, inngest)
+├── components/
+│   ├── ui/                 # shadcn/ui components
+│   ├── forms/              # Form components (react-hook-form + zod)
+│   ├── layout/             # Layout components (header, sidebar)
+│   ├── providers/          # Context providers wrapper
+│   └── shared/             # Shared components (skeletons, error boundary)
+├── server/
+│   ├── db/                 # Prisma client singleton
+│   ├── auth/               # Better Auth config + client
+│   └── email/              # Resend email service
+├── trpc/
+│   ├── init.ts             # tRPC initialization + procedures
+│   ├── client.tsx          # Client-side tRPC provider
+│   ├── server.ts           # Server-side tRPC proxy
+│   ├── query-client.ts     # Shared QueryClient factory
+│   └── routers/            # tRPC routers (post, ai)
+├── inngest/
+│   ├── client.ts           # Inngest client
+│   └── functions/          # Background functions
+├── i18n/                   # next-intl configuration
+├── stores/                 # Zustand stores
+├── hooks/                  # Custom React hooks
+├── lib/                    # Utilities, validators, constants
+└── types/                  # Global TypeScript types
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Environment Variables
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+See `.env.example` for all required variables. Key categories:
 
-## Deploy on Vercel
+- **Database**: `DATABASE_URL`, `DIRECT_URL` (Neon)
+- **Auth**: `BETTER_AUTH_SECRET`, `BETTER_AUTH_URL`
+- **Email**: `RESEND_API_KEY`, `EMAIL_FROM`
+- **AI**: `OPENAI_API_KEY` or `AI_GATEWAY_API_KEY`
+- **Storage**: `BLOB_READ_WRITE_TOKEN`
+- **Inngest**: `INNGEST_EVENT_KEY`, `INNGEST_SIGNING_KEY` (auto-set on Vercel)
+- **App**: `NEXT_PUBLIC_APP_URL`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Set `SKIP_ENV_VALIDATION=1` for Docker builds or CI.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Key Patterns
+
+### tRPC + TanStack Query
+
+- Server prefetch in RSC → `HydrationBoundary` → client consumes with `useQuery`
+- Shared zod schemas between tRPC input and form validation
+- Protected procedures for authenticated routes
+
+### i18n
+
+- `localePrefix: 'never'` — no URL prefix, locale via cookie/header
+- `messages/en.json` + `messages/sr.json`
+
+### Auth
+
+- Better Auth with email/password + email verification
+- Database sessions (not JWT)
+- Cookie-based middleware protection
+
+## Scripts
+
+```bash
+npm run dev          # Start dev server (Turbopack)
+npm run build        # Production build
+npm run lint         # Run ESLint
+npm run format       # Format with Prettier
+npm run typecheck    # TypeScript type check
+npm run spellcheck   # Run cspell
+npm run inngest:dev  # Start Inngest Dev Server
+```
+
+## Deployment
+
+### Vercel (Recommended)
+
+1. Push to GitHub
+2. Import in Vercel
+3. Set environment variables
+4. Deploy
+
+### Manual
+
+```bash
+npm run build
+npm start
+```
+
+## License
+
+MIT

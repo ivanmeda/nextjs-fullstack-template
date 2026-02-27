@@ -1,10 +1,12 @@
 "use client";
 
 import { ErrorBoundary, type FallbackProps } from "react-error-boundary";
-import { Suspense, type ReactNode } from "react";
+import type { ReactNode, ComponentType } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AlertTriangle } from "lucide-react";
+
+export { type FallbackProps } from "react-error-boundary";
 
 export function QueryErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
   return (
@@ -27,18 +29,21 @@ export function QueryErrorFallback({ error, resetErrorBoundary }: FallbackProps)
   );
 }
 
-export function QueryBoundary({
+export function QueryErrorBoundary({
   children,
-  loadingFallback,
-  errorFallback,
+  fallbackComponent,
+  resetKeys,
 }: {
   children: ReactNode;
-  loadingFallback?: ReactNode;
-  errorFallback?: React.ComponentType<FallbackProps>;
+  fallbackComponent?: ComponentType<FallbackProps>;
+  resetKeys?: Array<unknown>;
 }) {
   return (
-    <ErrorBoundary FallbackComponent={errorFallback ?? QueryErrorFallback}>
-      <Suspense fallback={loadingFallback ?? null}>{children}</Suspense>
+    <ErrorBoundary
+      FallbackComponent={fallbackComponent ?? QueryErrorFallback}
+      resetKeys={resetKeys}
+    >
+      {children}
     </ErrorBoundary>
   );
 }

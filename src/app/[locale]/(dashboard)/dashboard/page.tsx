@@ -28,10 +28,8 @@ export default async function DashboardPage() {
         <CreatePostForm />
       </div>
 
-      <HydrateClient>
-        <Suspense fallback={<PostListSkeleton />}>
-          <PostList limit={10} />
-        </Suspense>
+      <HydrateClient loadingFallback={<PostListSkeleton />}>
+        <PostList limit={10} />
       </HydrateClient>
     </div>
   );

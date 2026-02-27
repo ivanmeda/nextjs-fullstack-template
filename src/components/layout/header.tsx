@@ -13,6 +13,7 @@ import { useSession, signOut } from "@/server/auth/client";
 import { useRouter } from "next/navigation";
 import { Menu, LogOut, Settings } from "lucide-react";
 import { useUIStore } from "@/stores/ui-store";
+import { ThemeToggle } from "@/components/shared/theme-toggle";
 
 export function Header() {
   const { data: session } = useSession();
@@ -30,6 +31,7 @@ export function Header() {
         <Menu className="h-5 w-5" />
       </Button>
       <div className="flex-1" />
+      <ThemeToggle />
       {session?.user && (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

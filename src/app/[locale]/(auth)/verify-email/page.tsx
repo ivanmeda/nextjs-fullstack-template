@@ -6,8 +6,8 @@ export default function VerifyEmailPage() {
     <div className="flex min-h-screen items-center justify-center">
       <Card className="w-full max-w-md text-center">
         <CardHeader>
-          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-            <MailCheck className="h-6 w-6 text-primary" />
+          <div className="bg-primary/10 mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full">
+            <MailCheck className="text-primary h-6 w-6" />
           </div>
           <CardTitle className="text-2xl">Check your email</CardTitle>
           <CardDescription>
@@ -15,7 +15,7 @@ export default function VerifyEmailPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             Didn&apos;t receive an email? Check your spam folder or try signing up again.
           </p>
         </CardContent>

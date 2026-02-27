@@ -30,9 +30,7 @@ export default function PricingPage() {
     <div className="mx-auto max-w-5xl px-4 py-16">
       <div className="mb-12 text-center">
         <h1 className="text-4xl font-bold">Pricing</h1>
-        <p className="mt-4 text-lg text-muted-foreground">
-          Choose the plan that works for you.
-        </p>
+        <p className="text-muted-foreground mt-4 text-lg">Choose the plan that works for you.</p>
       </div>
       <div className="grid gap-6 md:grid-cols-3">
         {plans.map((plan) => (
@@ -46,7 +44,7 @@ export default function PricingPage() {
               <p className="mt-2 text-3xl font-bold">
                 {plan.price}
                 {plan.price !== "Custom" && (
-                  <span className="text-sm font-normal text-muted-foreground">/month</span>
+                  <span className="text-muted-foreground text-sm font-normal">/month</span>
                 )}
               </p>
             </CardHeader>
@@ -54,7 +52,7 @@ export default function PricingPage() {
               <ul className="space-y-2">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-center gap-2 text-sm">
-                    <Check className="h-4 w-4 text-primary" />
+                    <Check className="text-primary h-4 w-4" />
                     {feature}
                   </li>
                 ))}

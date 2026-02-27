@@ -1,8 +1,9 @@
 "use client";
 
+import { useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { LogOut, Menu, Settings } from "lucide-react";
-import { useRouter } from "@/i18n/navigation";
+import { usePathname, useRouter } from "@/i18n/navigation";
 import { useUIStore } from "@/stores/ui-store";
 import { signOut, useSession } from "@/server/auth/client";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -14,14 +15,23 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { LocaleSwitcher } from "@/components/shared/locale-switcher";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
+import { NavContent } from "@/components/layout/nav-content";
 
 export function Header() {
   const t = useTranslations("Header");
   const { data: session } = useSession();
   const router = useRouter();
+  const pathname = usePathname();
   const toggleSidebar = useUIStore((s) => s.toggleSidebar);
+  const mobileSidebarOpen = useUIStore((s) => s.mobileSidebarOpen);
+  const setMobileSidebarOpen = useUIStore((s) => s.setMobileSidebarOpen);
+
+  useEffect(() => {
+    setMobileSidebarOpen(false);
+  }, [pathname, setMobileSidebarOpen]);
 
   const handleSignOut = async () => {
     await signOut();
@@ -30,6 +40,16 @@ export function Header() {
 
   return (
     <header className="flex h-14 items-center justify-between border-b px-4">
+      <Sheet open={mobileSidebarOpen} onOpenChange={setMobileSidebarOpen}>
+        <SheetTrigger asChild>
+          <Button variant="ghost" size="icon" className="md:hidden">
+            <Menu className="h-5 w-5" />
+          </Button>
+        </SheetTrigger>
+        <SheetContent side="left" className="w-64 p-0">
+          <NavContent />
+        </SheetContent>
+      </Sheet>
       <Button variant="ghost" size="icon" onClick={toggleSidebar} className="hidden md:flex">
         <Menu className="h-5 w-5" />
       </Button>

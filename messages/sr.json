@@ -190,5 +190,10 @@
     "delete": "Obriši",
     "edit": "Uredi",
     "create": "Kreiraj"
+  },
+  "NotFound": {
+    "title": "Stranica nije pronađena",
+    "description": "Stranica koju tražite ne postoji ili je premještena.",
+    "backHome": "Nazad na početnu"
   }
 }

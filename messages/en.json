@@ -3,7 +3,9 @@
     "title": "Welcome to our app",
     "description": "Built with Next.js, tRPC, Better Auth, Prisma, and more.",
     "dashboardCta": "Dashboard",
-    "signInCta": "Sign in"
+    "signInCta": "Sign in",
+    "metaTitle": "Home",
+    "metaDescription": "Built with Next.js, tRPC, Better Auth, Prisma, and more."
   },
   "LocaleSwitcher": {
     "ariaLabel": "Change language",
@@ -22,7 +24,15 @@
     "resetPasswordDescription": "Enter your email to receive a password reset link.",
     "verifyEmailTitle": "Check your email",
     "verifyEmailDescription": "We've sent you a verification link. Please check your email to verify your account.",
-    "verifyEmailHint": "Didn't receive an email? Check your spam folder or try signing up again."
+    "verifyEmailHint": "Didn't receive an email? Check your spam folder or try signing up again.",
+    "signInMetaTitle": "Sign In",
+    "signInMetaDescription": "Sign in to your account.",
+    "signUpMetaTitle": "Sign Up",
+    "signUpMetaDescription": "Create a new account.",
+    "resetPasswordMetaTitle": "Reset Password",
+    "resetPasswordMetaDescription": "Reset your account password.",
+    "verifyEmailMetaTitle": "Verify Email",
+    "verifyEmailMetaDescription": "Verify your email address."
   },
   "AuthForms": {
     "emailLabel": "Email",
@@ -53,7 +63,9 @@
   },
   "DashboardPage": {
     "title": "Dashboard",
-    "welcome": "Welcome back, {name}!"
+    "welcome": "Welcome back, {name}!",
+    "metaTitle": "Dashboard",
+    "metaDescription": "Your personal dashboard."
   },
   "DashboardPostList": {
     "empty": "No posts yet. Create your first post!"
@@ -82,7 +94,9 @@
     "profileTitle": "Profile",
     "profileDescription": "Your profile information.",
     "name": "Name",
-    "email": "Email"
+    "email": "Email",
+    "metaTitle": "Settings",
+    "metaDescription": "Manage your account settings."
   },
   "Sidebar": {
     "appName": "My App",
@@ -136,7 +150,9 @@
         "popular": false,
         "features": ["Everything in Pro", "SSO", "Dedicated support", "SLA", "Custom integrations"]
       }
-    ]
+    ],
+    "metaTitle": "Pricing",
+    "metaDescription": "Choose the plan that works for you."
   },
   "Errors": {
     "tryAgain": "Try again",

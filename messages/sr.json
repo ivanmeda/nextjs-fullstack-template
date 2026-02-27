@@ -3,7 +3,9 @@
     "title": "Dobrodošli u našu aplikaciju",
     "description": "Napravljeno sa Next.js, tRPC, Better Auth, Prisma i više.",
     "dashboardCta": "Kontrolna tabla",
-    "signInCta": "Prijavite se"
+    "signInCta": "Prijavite se",
+    "metaTitle": "Početna",
+    "metaDescription": "Napravljeno sa Next.js, tRPC, Better Auth, Prisma i više."
   },
   "LocaleSwitcher": {
     "ariaLabel": "Promeni jezik",
@@ -22,7 +24,15 @@
     "resetPasswordDescription": "Unesite email da biste dobili link za reset lozinke.",
     "verifyEmailTitle": "Proverite svoj email",
     "verifyEmailDescription": "Poslali smo vam verifikacioni link. Proverite svoj email da biste verifikovali nalog.",
-    "verifyEmailHint": "Niste dobili email? Proverite spam folder ili pokušajte ponovo sa registracijom."
+    "verifyEmailHint": "Niste dobili email? Proverite spam folder ili pokušajte ponovo sa registracijom.",
+    "signInMetaTitle": "Prijava",
+    "signInMetaDescription": "Prijavite se na svoj nalog.",
+    "signUpMetaTitle": "Registracija",
+    "signUpMetaDescription": "Kreirajte novi nalog.",
+    "resetPasswordMetaTitle": "Reset lozinke",
+    "resetPasswordMetaDescription": "Resetujte lozinku naloga.",
+    "verifyEmailMetaTitle": "Verifikacija emaila",
+    "verifyEmailMetaDescription": "Verifikujte vašu email adresu."
   },
   "AuthForms": {
     "emailLabel": "Email",
@@ -53,7 +63,9 @@
   },
   "DashboardPage": {
     "title": "Kontrolna tabla",
-    "welcome": "Dobrodošli nazad, {name}!"
+    "welcome": "Dobrodošli nazad, {name}!",
+    "metaTitle": "Kontrolna tabla",
+    "metaDescription": "Vaša kontrolna tabla."
   },
   "DashboardPostList": {
     "empty": "Još nema objava. Kreirajte svoju prvu objavu!"
@@ -82,7 +94,9 @@
     "profileTitle": "Profil",
     "profileDescription": "Informacije o vašem profilu.",
     "name": "Ime",
-    "email": "Email"
+    "email": "Email",
+    "metaTitle": "Podešavanja",
+    "metaDescription": "Upravljajte podešavanjima naloga."
   },
   "Sidebar": {
     "appName": "Moja aplikacija",
@@ -142,7 +156,9 @@
           "Prilagođene integracije"
         ]
       }
-    ]
+    ],
+    "metaTitle": "Cene",
+    "metaDescription": "Izaberite paket koji vam odgovara."
   },
   "Errors": {
     "tryAgain": "Pokušajte ponovo",

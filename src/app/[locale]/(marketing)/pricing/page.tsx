@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { Check } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -12,6 +13,14 @@ type PricingPlan = {
   popular: boolean;
   features: string[];
 };
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("PricingPage");
+  return {
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+  };
+}
 
 export default async function PricingPage() {
   const t = await getTranslations("PricingPage");

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { LayoutDashboard, Settings, MessageSquare, FileText, Menu } from "lucide-react";
+import { LayoutDashboard, Settings, Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { useUIStore } from "@/stores/ui-store";
@@ -42,13 +42,12 @@ function NavContent() {
 export function Sidebar() {
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const sidebarOpen = useUIStore((s) => s.sidebarOpen);
-  const toggleSidebar = useUIStore((s) => s.toggleSidebar);
 
   if (isDesktop) {
     return (
       <aside
         className={cn(
-          "border-r bg-background transition-all duration-300",
+          "bg-background border-r transition-all duration-300",
           sidebarOpen ? "w-64" : "w-0 overflow-hidden"
         )}
       >
@@ -60,7 +59,7 @@ export function Sidebar() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="ghost" size="icon" className="fixed left-4 top-4 z-40 md:hidden">
+        <Button variant="ghost" size="icon" className="fixed top-4 left-4 z-40 md:hidden">
           <Menu className="h-5 w-5" />
         </Button>
       </SheetTrigger>

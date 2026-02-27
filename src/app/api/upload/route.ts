@@ -20,9 +20,9 @@ export async function POST(request: Request): Promise<NextResponse> {
           tokenPayload: JSON.stringify({ userId: session.user.id }),
         };
       },
-      onUploadCompleted: async ({ blob, tokenPayload }) => {
+      onUploadCompleted: async ({ blob: _blob, tokenPayload: _tokenPayload }) => {
         // Save blob URL to database or trigger further processing
-        // tokenPayload contains { userId } from onBeforeGenerateToken
+        // _tokenPayload contains { userId } from onBeforeGenerateToken
       },
     });
 

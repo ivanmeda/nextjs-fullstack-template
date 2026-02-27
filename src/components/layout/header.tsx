@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useSession, signOut } from "@/server/auth/client";
 import { useRouter } from "next/navigation";
-import { Menu, LogOut, Settings, User } from "lucide-react";
+import { Menu, LogOut, Settings } from "lucide-react";
 import { useUIStore } from "@/stores/ui-store";
 
 export function Header() {
@@ -50,7 +50,7 @@ export function Header() {
             <div className="flex items-center gap-2 p-2">
               <div className="flex flex-col space-y-1">
                 <p className="text-sm font-medium">{session.user.name}</p>
-                <p className="text-xs text-muted-foreground">{session.user.email}</p>
+                <p className="text-muted-foreground text-xs">{session.user.email}</p>
               </div>
             </div>
             <DropdownMenuSeparator />

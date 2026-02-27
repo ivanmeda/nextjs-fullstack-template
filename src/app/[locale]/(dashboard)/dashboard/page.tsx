@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Suspense } from "react";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
@@ -7,6 +8,14 @@ import { HydrateClient, prefetch, trpc } from "@/trpc/server";
 import { PostList } from "@/components/dashboard/post-list";
 import { CreatePostForm } from "@/components/dashboard/create-post-form";
 import { PostListSkeleton } from "@/components/shared/loading-skeleton";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("DashboardPage");
+  return {
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+  };
+}
 
 export default async function DashboardPage() {
   const session = await auth.api.getSession({

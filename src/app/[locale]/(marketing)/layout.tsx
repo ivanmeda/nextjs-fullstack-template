@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { APP_NAME } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
 import { LocaleSwitcher } from "@/components/shared/locale-switcher";
 
@@ -15,7 +16,7 @@ export default async function MarketingLayout({ children }: { children: React.Re
       <header className="border-b">
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <Link href="/" className="text-xl font-bold">
-            MyApp
+            {APP_NAME}
           </Link>
           <nav className="flex items-center gap-6">
             {navLinks.map((link) => (

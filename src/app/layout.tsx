@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { getLocale } from "next-intl/server";
+import { APP_NAME, APP_DESCRIPTION } from "@/lib/constants";
 import { Providers } from "@/components/providers";
 import "./globals.css";
 
@@ -15,8 +16,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Next.js Fullstack Template",
-  description: "A production-ready fullstack template",
+  title: {
+    default: APP_NAME,
+    template: `%s | ${APP_NAME}`,
+  },
+  description: APP_DESCRIPTION,
 };
 
 export default async function RootLayout({

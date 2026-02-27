@@ -1,6 +1,5 @@
-// App-wide constants
+export const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME ?? "MyApp";
 
-export const APP_NAME = "Next.js Fullstack Template";
 export const APP_DESCRIPTION = "A production-ready fullstack template";
 
 export const LOCALES = ["en", "sr"] as const;

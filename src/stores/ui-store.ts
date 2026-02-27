@@ -5,6 +5,8 @@ interface UIState {
   sidebarOpen: boolean;
   toggleSidebar: () => void;
   setSidebarOpen: (open: boolean) => void;
+  mobileSidebarOpen: boolean;
+  setMobileSidebarOpen: (open: boolean) => void;
 }
 
 export const useUIStore = create<UIState>()(
@@ -13,16 +15,12 @@ export const useUIStore = create<UIState>()(
       sidebarOpen: true,
       toggleSidebar: () => set((s) => ({ sidebarOpen: !s.sidebarOpen })),
       setSidebarOpen: (open) => set({ sidebarOpen: open }),
+      mobileSidebarOpen: false,
+      setMobileSidebarOpen: (open) => set({ mobileSidebarOpen: open }),
     }),
     {
-      name: "ui-store", // localStorage key
+      name: "ui-store",
+      partialize: (state) => ({ sidebarOpen: state.sidebarOpen }),
     }
   )
 );
-
-// Usage in components — use selectors to avoid unnecessary re-renders:
-// const sidebarOpen = useUIStore((s) => s.sidebarOpen);
-// const toggleSidebar = useUIStore((s) => s.toggleSidebar);
-//
-// NEVER do: const { sidebarOpen, toggleSidebar } = useUIStore();
-// ^ This subscribes to ALL state changes

@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { Link, useRouter } from "@/i18n/navigation";
 import { signUpSchema, type SignUpInput } from "@/lib/validators";
 import { signUp } from "@/server/auth/client";
@@ -21,7 +21,6 @@ import { Input } from "@/components/ui/input";
 export function SignUpForm() {
   const t = useTranslations("AuthForms");
   const router = useRouter();
-  const [error, setError] = useState<string>();
 
   const form = useForm<SignUpInput>({
     resolver: zodResolver(signUpSchema),
@@ -33,17 +32,17 @@ export function SignUpForm() {
   });
 
   const onSubmit = async (data: SignUpInput) => {
-    setError(undefined);
     const { error, data: result } = await signUp.email({
       ...data,
       callbackURL: "/dashboard",
     });
 
     if (error) {
-      setError(error.message);
+      toast.error(error.message ?? t("toastSignUpError"));
       return;
     }
 
+    toast.success(t("toastSignUpSuccess"));
     router.push(result?.token ? "/dashboard" : "/verify-email");
   };
 
@@ -89,7 +88,6 @@ export function SignUpForm() {
             </FormItem>
           )}
         />
-        {error && <p className="text-destructive text-sm">{error}</p>}
         <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
           {form.formState.isSubmitting ? t("signUpSubmitting") : t("signUpSubmit")}
         </Button>

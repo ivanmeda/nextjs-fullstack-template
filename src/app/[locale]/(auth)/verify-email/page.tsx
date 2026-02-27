@@ -1,6 +1,15 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { MailCheck } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("AuthPages");
+  return {
+    title: t("verifyEmailMetaTitle"),
+    description: t("verifyEmailMetaDescription"),
+  };
+}
 
 export default async function VerifyEmailPage() {
   const t = await getTranslations("AuthPages");

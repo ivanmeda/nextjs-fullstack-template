@@ -2,7 +2,7 @@
 
 A production-ready fullstack template built with modern technologies and best practices. Batteries included — authentication, API layer, background jobs, i18n, AI integration, file uploads, and more.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ivanmeda/nextjs-fullstack-template&stores=[{"type":"neon"}]&env=BETTER_AUTH_SECRET,RESEND_API_KEY,OPENAI_API_KEY&envDescription=Required%20environment%20variables&envLink=https://github.com/ivanmeda/nextjs-fullstack-template%23environment-variables)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fivanmeda%2Fnextjs-fullstack-template&project-name=my-app&repository-name=my-app&products=%5B%7B%22type%22%3A%22integration%22%2C%22integrationSlug%22%3A%22neon%22%2C%22productSlug%22%3A%22neon%22%2C%22protocol%22%3A%22storage%22%7D%5D&env=BETTER_AUTH_SECRET,RESEND_API_KEY,OPENAI_API_KEY&envDescription=Required%20environment%20variables&envLink=https%3A%2F%2Fgithub.com%2Fivanmeda%2Fnextjs-fullstack-template%23environment-variables)
 
 ## Tech Stack
 

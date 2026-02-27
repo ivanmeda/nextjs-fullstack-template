@@ -121,21 +121,24 @@ Every route group (`(auth)`, `(dashboard)`, `(marketing)`) has its own `error.ts
 ### Setup
 
 ```bash
-# 1. Clone
-git clone https://github.com/ivanmeda/nextjs-fullstack-template.git
-cd nextjs-fullstack-template
+# 1. Create your project from template
+gh repo create my-app --template ivanmeda/nextjs-fullstack-template --public --clone
+cd my-app
 
 # 2. Install dependencies
 npm install
 
-# 3. Set up environment variables
+# 3. Customize for your project (updates package.json, README, docs)
+npm run setup -- --name my-app --description "My awesome app"
+
+# 4. Set up environment variables
 cp .env.example .env.local
 # Fill in all required values (see Environment Variables section below)
 
-# 4. Push database schema to Neon
+# 5. Push database schema to Neon
 npx prisma db push
 
-# 5. Start dev server
+# 6. Start dev server
 npm run dev
 ```
 
@@ -274,6 +277,7 @@ src/
 | `db:studio`         | `npm run db:studio`         | Open Prisma Studio GUI                           |
 | `db:generate`       | `npm run db:generate`       | Regenerate Prisma client                         |
 | `inngest:dev`       | `npm run inngest:dev`       | Start Inngest Dev Server                         |
+| `setup`             | `npm run setup`             | Customize template for your project (name, docs) |
 | `prepare`           | `npm run prepare`           | Set up Husky git hooks (runs on install)         |
 | `postinstall`       | -                           | Auto-generates Prisma client after `npm install` |
 
